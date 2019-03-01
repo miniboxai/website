@@ -12,6 +12,17 @@ const CompLibrary = require('../../core/CompLibrary.js');
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
+const translate = require('../../server/translate.js').translate;
+const translation = require('../../server/translation.js')
+
+function t(str, lang) {
+  let s = str.split('|')[0]
+  if (translation || translation[lang] ||
+    translation[lang]['pages-strings'][s] ) {
+      return translation[lang]['pages-strings'][s]
+  }
+  return str
+}
 
 class HomeSplash extends React.Component {
   render() {
@@ -38,7 +49,7 @@ class HomeSplash extends React.Component {
     const ProjectTitle = () => (
       <h2 className="projectTitle">
         {siteConfig.title}
-        <small>{siteConfig.tagline}</small>
+        <small><translate desc="tagline">Build your own Machine-Learning services</translate></small>
       </h2>
     );
 
@@ -60,12 +71,12 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/docusaurus.svg`} />
+        <Logo img_src={`${baseUrl}img/minibox-icon.png`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html')}>Example Link</Button>
+            <Button href="#try"><translate desc="link">Try It Out</translate></Button>
+            <Button href={docUrl('doc1.html')}>Guides</Button>
             <Button href={docUrl('doc2.html')}>Example Link 2</Button>
           </PromoSection>
         </div>
@@ -96,8 +107,8 @@ class Index extends React.Component {
       <div
         className="productShowcaseSection paddingBottom"
         style={{textAlign: 'center'}}>
-        <h2>Feature Callout</h2>
-        <MarkdownBlock>These are features of this project</MarkdownBlock>
+        <h2 desc="feature3"><translate>Easy Plugins</translate></h2>
+        <MarkdownBlock ><translate>You can be integrated Data visualization, Samples Annotation Tool or sound wave Visual Editor Plugins, allowing you to focus more on the algorithm itself than on trivial</translate></MarkdownBlock>
       </div>
     );
 
@@ -108,7 +119,7 @@ class Index extends React.Component {
             content: 'Talk about trying this out',
             image: `${baseUrl}img/docusaurus.svg`,
             imageAlign: 'left',
-            title: 'Try it Out',
+            title: <translate>Try it Out</translate>,
           },
         ]}
       </Block>
@@ -142,20 +153,21 @@ class Index extends React.Component {
     );
 
     const Features = () => (
-      <Block layout="fourColumn">
+      <Block layout="threeColumn">
         {[
           {
-            content: 'This is the content of my feature',
-            image: `${baseUrl}img/docusaurus.svg`,
+            content: <translate>Write in your favorite editor, but automate accelerator in remote GPU servers</translate>,
+            image: `${baseUrl}img/coding.png`,
             imageAlign: 'top',
-            title: 'Feature One',
+            title: <translate>Focus on Coding</translate>,
           },
           {
-            content: 'The content of my second feature',
-            image: `${baseUrl}img/docusaurus.svg`,
+            content: <translate>Support for multiple data source inputs and outputs, likes File, AWS S3, Google GCS, Azure, Hadoop FS, Minio...</translate>,
+            image: `${baseUrl}img/big-data.png`,
             imageAlign: 'top',
-            title: 'Feature Two',
+            title: <translate>Multiple Big Data</translate>,
           },
+         
         ]}
       </Block>
     );
@@ -204,5 +216,9 @@ class Index extends React.Component {
     );
   }
 }
+
+Index.defaultProps = {
+  language: 'zh-CN',
+};
 
 module.exports = Index;

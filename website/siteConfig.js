@@ -14,15 +14,15 @@ const users = [
     caption: 'User1',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/docusaurus.svg',
+    image: '/img/minibox-icon.png',
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
 ];
 
 const siteConfig = {
-  title: 'Minibox.AI Site', // Title for your website.
-  tagline: 'Minibox a Machine Learing training toolbox',
+  title: 'Minibox.AI 0.0.1', // Title for your website.
+  tagline: 'Build your own Machine-Learning services',
   url: 'https://minibox.ai', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -35,27 +35,36 @@ const siteConfig = {
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
-
+  algolia: {
+    appId: "ESHNC4TA35",
+    apiKey: "2b72f811cbc8696545e0dd2cfa5493ab",
+    indexName: "docs_and_blogs",
+    algoliaOptions: {   
+      facetFilters: [ "language:LANGUAGE", "version:VERSION" ] 
+    }
+  },
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'doc1', label: 'Docs'},
     {doc: 'doc4', label: 'API'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
+    {search: true },
+    {languages: true},
   ],
 
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
-  favicon: 'img/favicon.png',
+  headerIcon: 'img/minibox-icon.png',
+  footerIcon: 'img/minibox-icon.png',
+  favicon: 'img/minibox-icon.png',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2E8555',
-    secondaryColor: '#205C3B',
+    primaryColor: '#080705',
+    secondaryColor: '#40434E',
   },
 
   /* Custom fonts for website */
@@ -73,7 +82,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} Minibox AI Inc`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -89,8 +98,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/minibox-icon.png',
+  twitterImage: 'img/minibox-icon.png',
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,

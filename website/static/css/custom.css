@@ -14,3 +14,26 @@
 
 @media only screen and (min-width: 1500px) {
 }
+
+.fixedHeaderContainer {
+    background-color: #40434E;
+}
+
+.projectTitle {
+    color: #E8E9E9;
+}
+
+.homeContainer {
+    background-color: #40434E;
+}
+
+.button {
+    background: #080705;
+    color: #fff;
+}
+
+.button:hover {
+    background: #fff;
+    color: #080705;
+    border: 1px solid #E8E9E9;
+}
