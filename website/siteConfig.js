@@ -101,6 +101,7 @@ const siteConfig = {
   ogImage: 'img/minibox-icon.png',
   twitterImage: 'img/minibox-icon.png',
 
+  gaTrackingId: "UA-122482496-1",
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
 
